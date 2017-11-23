@@ -1,11 +1,32 @@
 <apex:page standardController="SPT_Item__c" extensions="SPT_ItemCX">
     <h1>{! greeting } - {! $User.FirstName }</h1>
-    <apex:pageBlock title="Page Item: {! SPT_Item__c.Name }">
-        <!-- Show trader offer -->
+    <apex:pageBlock title="Current Item: {! SPT_Item__c.Name }">
+        <!-- Show current item -->
         <apex:pageBlockSection >
-            <div>
-                <b>Show Trader's offer using extension class</b>
-            </div>
+            Other Item for you
+            <table>
+                <tr>
+                    <td><b>Name: </b></td>
+                    <td>{! SPT_Item__c.Name }</td>
+                </tr>
+                <tr>
+                    <td><b>Start price: </b></td>
+                    <td>{! SPT_Item__c.SPT_StartPrice__c }</td>
+                </tr>
+                <tr>
+                    <td><b>Start offer at: </b></td>
+                    <td>{! SPT_Item__c.SPT_StartAt__c }</td>
+                </tr>
+                <tr>
+                    <td><b>End offer at: </b></td>
+                    <td>{! SPT_Item__c.SPT_EndAt__c }</td>
+                </tr>
+                <tr>
+                    <td><b>Sold: </b></td>
+                    <td style="text-transform: uppercase;">{! SPT_Item__c.SPT_Sold__c }</td>
+                </tr>
+            </table>
+
             <apex:dataTable value="{! alloffer }" var="offer" cellpadding="5" border="1">
                 <!-- Column 1 -->
                 <apex:column >
@@ -29,6 +50,36 @@
                 <!-- End Column 3 -->
             </apex:dataTable>
         </apex:pageBlockSection>
-        <!-- End show trader offer -->
+    </apex:pageBlock>
+
+    <apex:pageBlock>
+        <apex:pageBlockSection >
+            <h3>Other Item</h3>
+            <apex:dataTable value="{! otheritem }" var="item" cellpadding="5" border="1">
+                <!-- Column 1 -->
+                <apex:column >
+                    <apex:facet name="header">Id</apex:facet>
+                    {! item.Id}
+                </apex:column>
+                <!-- End Column 1 -->
+
+                <!-- Column 2 -->
+                <apex:column >
+                    <apex:facet name="header">Name</apex:facet>
+                    ${! item.Name}
+                </apex:column>
+                <!-- End Column 2 -->
+
+                <!-- Column 3 -->
+                <apex:column >
+                    <apex:facet name="header">Link</apex:facet>
+                    <apex:outputLink value="/apex/SPT_ItemPage">
+                        view =>
+                        <apex:param name="id" value="{! item.Id}"/>
+                    </apex:outputLink>
+                </apex:column>
+                <!-- End Column 3 -->
+            </apex:dataTable>
+        </apex:pageBlockSection>
     </apex:pageBlock>
 </apex:page>
