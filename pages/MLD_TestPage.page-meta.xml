@@ -3,5 +3,5 @@
     <apiVersion>41.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <label>find_record</label>
+    <label>Test Page</label>
 </ApexPage>

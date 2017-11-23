@@ -1,10 +1,10 @@
 <apex:page >
-	<h1>
+    <h1>
         Hello world
     </h1>
     <apex:pageBlock title="title 1">
-    	<apex:pageBlockSection title="title 2" columns="1">
-        	{! $user.FirstName & ' - ' & $User.LastName }
+        <apex:pageBlockSection title="title 2" columns="1">
+            {! $user.FirstName & ' - ' & $User.LastName }
         </apex:pageBlockSection>
         
         <apex:pageBlockSection title="title 3">

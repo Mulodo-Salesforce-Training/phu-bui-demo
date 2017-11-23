@@ -1,10 +1,10 @@
-public class test {
+public class MLD_Test {
     public String name = 'Here is string';
-	
+    
     public static void runTest()
     {
         Account[] acctsWithContacts = [ SELECT Name, (SELECT FirstName,LastName FROM Contacts)
-                               			FROM Account];
+                                        FROM Account];
         // Get child records
         Contact[] cts = acctsWithContacts[0].Contacts;
         SYSTEM.debug(acctsWithContacts);
