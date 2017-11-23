@@ -1,0 +1,8 @@
+<apex:page standardController="SPT_Item__c" extensions="SPT_ItemCX">
+  <apex:pageBlock title="Item Page">
+    <apex:pageBlockSection >
+      <h1>Congratulations</h1>
+      This is your new Page
+    </apex:pageBlockSection>
+  </apex:pageBlock>
+</apex:page>

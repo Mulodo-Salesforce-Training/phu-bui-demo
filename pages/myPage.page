@@ -1,0 +1,19 @@
+<apex:page >
+	<h1>
+        Hello world
+    </h1>
+    <apex:pageBlock title="title 1">
+    	<apex:pageBlockSection title="title 2" columns="1">
+        	{! $user.FirstName & ' - ' & $User.LastName }
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="title 3">
+            User ID : {! $user.id }  <br/>
+            Today : {! TODAY() + 7 }  <br/>
+            Max : {! Max(1,2,3,4,5,2,3,5,6,9,4,6,4) } <br/>
+            Contain : {! IF(CONTAINS('ssdwwd','s'),'Yep','NO') } <br/>
+            Check active : {! IF($user.isActive,$user.FirstName,'User not active') } <br/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+</apex:page>
