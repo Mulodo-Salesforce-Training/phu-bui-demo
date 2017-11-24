@@ -1,6 +1,7 @@
-public class SPT_ItemCX {
+public with sharing class SPT_ItemCX {
     public final SPT_Item__c item;
     public String result = 'This is default resut';
+    public String offerId = '';
     
     // The extension constructor initializes the private member
     // variable item by using the getRecord method from the standard
@@ -22,10 +23,11 @@ public class SPT_ItemCX {
                 SELECT SPT_Trader__r.SPT_FirstName__c, SPT_OfferPrice__c, CreatedDate
             	FROM SPT_Offer__c
             	WHERE SPT_Item__c = :this.item.Id
+                ORDER BY SPT_OfferPrice__c DESC
             	LIMIT 10
             ];
     	} catch (QueryException e) {
-    		//return e.getMessage();
+    		System.debug(e.getMessage());
     	}
         return listOffer;
     }
@@ -55,5 +57,9 @@ public class SPT_ItemCX {
             System.debug(e.getMessage());
         }
         return listItem;
+    }
+
+    public void chooseOffer() {
+        
     }
 }

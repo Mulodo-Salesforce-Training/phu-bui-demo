@@ -1,4 +1,7 @@
 <apex:page standardController="SPT_Item__c" extensions="SPT_ItemCX" tabStyle="Opportunity">
+    <style>
+        .text-right{text-align: right;}
+    </style>
     <!-- Component -->
     <c:SPT_CurrentDateTimeComponent />
     <!-- End component -->
@@ -27,22 +30,33 @@
                 </tr>
                 <tr>
                     <td><b>Sold: </b></td>
-                    <td style="text-transform: uppercase;">{! SPT_Item__c.SPT_Sold__c }</td>
+                    <td>{! SPT_Item__c.SPT_Sold__c }</td>
                 </tr>
             </table>
-
+            <apex:form>
+                <!-- <apex:inputField value="{! offerId }"/> -->
+            </apex:form>
             <apex:dataTable value="{! alloffer }" var="offer" cellpadding="5" border="1">
+                <!-- Column 0 -->
+                <apex:column>
+                    <apex:facet name="header">Choose</apex:facet>
+                    <apex:form>
+                        <apex:commandButton value="Accept" action="{! chooseOffer }"/>
+                    </apex:form>
+                </apex:column>
+                <!-- End Column 0 -->
+
                 <!-- Column 1 -->
                 <apex:column >
-                    <apex:facet name="header">Trader name</apex:facet>
-                    {! offer.SPT_Trader__r.SPT_FirstName__c}
+                    <apex:facet name="header">Trader</apex:facet>
+                    {! offer.SPT_Trader__r.SPT_FirstName__c }
                 </apex:column>
                 <!-- End Column 1 -->
 
                 <!-- Column 2 -->
-                <apex:column >
-                    <apex:facet name="header">Offer price</apex:facet>
-                    ${! offer.SPT_OfferPrice__c}
+                <apex:column style="text-align: right;">
+                    <apex:facet name="header">($) Offer price</apex:facet>
+                    {! offer.SPT_OfferPrice__c}
                 </apex:column>
                 <!-- End Column 2 -->
 
@@ -86,4 +100,6 @@
             </apex:dataTable>
         </apex:pageBlockSection>
     </apex:pageBlock>
+
 </apex:page>
+
