@@ -1,4 +1,8 @@
-<apex:page standardController="SPT_Item__c" extensions="SPT_ItemCX">
+<apex:page standardController="SPT_Item__c" extensions="SPT_ItemCX" tabStyle="Opportunity">
+    <!-- Component -->
+    <c:SPT_CurrentDateTimeComponent />
+    <!-- End component -->
+
     <h1>{! greeting } - {! $User.FirstName }</h1>
     <apex:pageBlock title="Current Item: {! SPT_Item__c.Name }">
         <!-- Show current item -->
@@ -52,7 +56,7 @@
         </apex:pageBlockSection>
     </apex:pageBlock>
 
-    <apex:pageBlock>
+    <apex:pageBlock >
         <apex:pageBlockSection >
             <h3>Other Item</h3>
             <apex:dataTable value="{! otheritem }" var="item" cellpadding="5" border="1">

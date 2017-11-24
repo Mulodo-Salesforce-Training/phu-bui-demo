@@ -1,0 +1,15 @@
+<apex:component>
+	<style>
+		#componentCurrentDateTime{
+			position: fixed;
+		    right: 0px;
+		    top: 0px;
+		    background-color: grey;
+		    z-index: 99999;
+		    color: white;
+		}
+	</style>
+	<span id="componentCurrentDateTime">
+		Component Date Time: {! TODAY() + 7 }
+	</span>
+</apex:component>
