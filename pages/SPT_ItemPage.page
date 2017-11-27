@@ -33,14 +33,14 @@
                     <td>{! SPT_Item__c.SPT_Sold__c }</td>
                 </tr>
             </table>
-            <apex:form>
+            <apex:form >
                 <!-- <apex:inputField value="{! offerId }"/> -->
             </apex:form>
             <apex:dataTable value="{! alloffer }" var="offer" cellpadding="5" border="1">
                 <!-- Column 0 -->
-                <apex:column>
+                <apex:column >
                     <apex:facet name="header">Choose</apex:facet>
-                    <apex:form>
+                    <apex:form >
                         <apex:commandButton value="Accept" action="{! chooseOffer }"/>
                     </apex:form>
                 </apex:column>
@@ -102,4 +102,3 @@
     </apex:pageBlock>
 
 </apex:page>
-

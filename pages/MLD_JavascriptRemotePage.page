@@ -1,0 +1,15 @@
+<apex:page showHeader="false" standardController="SPT_Item__c" extensions="SPT_ItemCX">
+
+    <script type="text/javascript">
+    function getRemoteItem() {
+            SPT_ItemCX.getGreeting(
+            function(result, event){
+                console.log(result);
+            }
+        );
+    }
+    </script>
+
+    <button onClick="getRemoteItem()">Run</button>
+
+</apex:page>

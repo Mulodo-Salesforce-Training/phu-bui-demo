@@ -1,0 +1,47 @@
+<apex:page showHeader="false">
+    
+    <!-- Remote Objects definition to set accessible sObjects and fields -->
+    <apex:remoteObjects >
+        <apex:remoteObjectModel name="Contact" jsShorthand="listContact" 
+            fields="Name,Id">
+        </apex:remoteObjectModel>
+    </apex:remoteObjects>
+
+    <!-- JavaScript to make Remote Objects calls -->
+    <script>
+        var fetchContact = function(){
+            // Create a new Remote Object
+            var ct = new SObjectModel.listContact();
+            
+            // Use the Remote Object to query for 10 warehouse records
+            ct.retrieve({ limit: 10 }, function(err, records, event){
+                if(err) {
+                    alert(err.message);
+                }
+                else {
+                    var ul = document.getElementById("contactList");
+                    records.forEach(function(record) {
+                        // Build the text for a warehouse line item
+                        var ctText = record.get("Id");
+                        ctText += " -- ";
+                        ctText += record.get("Name");
+                        
+                        // Add the line item to the warehouses list
+                        var li = document.createElement("li");
+                        li.appendChild(document.createTextNode(ctText));
+                        ul.appendChild(li);
+                    });
+                }
+            });
+        };
+    </script>
+
+    <h1>Retrieve Contact via Remote Objects</h1>
+
+    <p>Contact:</p>
+
+    <ul id="contactList">
+    </ul>
+    <button onclick="fetchContact()">Retrieve Contact</button>
+
+</apex:page>
